@@ -1,0 +1,18 @@
+<br>
+<div>
+  <thf-widget class="thf-lg-12 thf-mt-12" t-title="Queries">
+    <thf-list>
+      <div *ngFor="let item of queries; let i = index">
+        <thf-list-item *ngIf="filterQuery.includes(item.status)"
+        [t-title]="item.func" [t-index]="i"
+        [t-actions]="eventsObject">
+        <thf-list-item-content style="display:flex">
+            <thf-tag class="thf-sm-12 thf-md-1  thf-lg-1"  t-icon="true"  [t-orientation]="orientation" [t-type]="isSuccess(item.status)"  [t-value]="valueTag(item.status)"></thf-tag>
+            <thf-info class="thf-sm-12  thf-md-1 thf-lg-1" t-label="Linha" [t-value]="item.line"></thf-info>
+            <thf-info class="thf-sm-12 thf-md-12 thf-lg-12" t-label="Query" [t-value]="(item.description.length>300)? (item.description | slice:0:300)+'...':(item.description)"></thf-info>
+          </thf-list-item-content>
+        </thf-list-item>
+      </div>
+    </thf-list>
+  </thf-widget>
+</div>

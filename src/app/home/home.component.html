@@ -1,0 +1,21 @@
+<thf-page-default t-title="Dashboard">
+  <thf-widget
+  class="thf-lg-12 thf-mt-12"
+  t-height="200"
+  t-title="Conexões">
+  <div class="thf-md-12 thf-font-subtitle" *ngIf= datas>
+    <thf-tag *ngFor="let item of datas; let x = index"
+    class="tagConn" 
+    [t-icon]="item.status" 
+    [t-label]="item.name" 
+    [t-orientation]="orientation" 
+    [t-type]="isSuccess(item.status)" 
+    [t-value]="valueTag(item.status)" >
+  </thf-tag>
+  </div>
+  
+</thf-widget>
+<div class="thf-md-12" id="divChart">
+  <bqa-chart-query></bqa-chart-query>
+</div>
+</thf-page-default>

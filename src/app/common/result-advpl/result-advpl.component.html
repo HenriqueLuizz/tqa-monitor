@@ -1,0 +1,26 @@
+<thf-table [t-columns]="columns" [t-items]="items" t-sort="true" [t-striped]="true">
+
+  <ng-template t-table-row-template let-rowItem let-i="rowIndex" [t-table-row-template-show]="isUndelivered">
+
+    <thf-widget t-title="Query detail {{ rowItem.code }}">
+      <div class="thf-row">
+
+        <thf-code-editor [(ngModel)]=rowItem.advpl t-language="sql" t-readonly="true" t-show-diff="false" t-theme="vs">
+
+        </thf-code-editor>
+      </div>
+    </thf-widget>
+
+  </ng-template>
+
+</thf-table>
+
+<!--thf-button class="thf-sm-12 thf-md-2 thf-lg-2"
+(t-click)="advplToObj()"
+t-disabled="false"
+t-icon="thf-icon thf-icon-more"
+t-label="Detalhes"
+t-loading="false"
+t-small="true"
+t-type="link" >
+</thf-button-->

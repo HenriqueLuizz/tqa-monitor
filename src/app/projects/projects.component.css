@@ -1,0 +1,23 @@
+.btn-right {
+    float: right;
+}
+.div-list {
+    margin-top: 10px
+}
+.btn-margin {
+    margin-left: 10px
+}
+
+#queryOk,#ok{
+	color: seagreen;
+}
+#queryFail,#fail{
+	color: darkred;
+	border-radius: 15px;
+}
+#totalQuery,#total{
+	color: #333
+}
+#queryRating,#rating{
+    color: darkorange
+}

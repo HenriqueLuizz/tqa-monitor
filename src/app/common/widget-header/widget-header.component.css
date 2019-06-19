@@ -1,0 +1,13 @@
+.div-widget{
+	padding: 0 0 60px;
+}
+#queryOk,#ok{
+	color: seagreen;
+}
+#queryFail,#fail{
+	color: darkred;
+	border-radius: 15px;
+}
+#totalQuery,#total{
+	color: #333
+}

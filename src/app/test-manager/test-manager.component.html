@@ -1,0 +1,24 @@
+<thf-page-default t-title="Test Manager">
+  <div class="thf-row">
+    <div class="thf-md-12">
+      <thf-widget
+      t-height="200"
+      t-no-shadow="true"
+      (t-setting)="modal.open()"
+      t-size="600"
+      t-title="Teste de Query Automático"
+      (t-title-action)="cliclSetting()">
+        <thf-modal #modal t-title="Configurações">
+          <thf-multiselect [(ngModel)]="dbTest" name="dbTest" t-label="Testar em:" [t-options]="options"></thf-multiselect>
+        </thf-modal>
+        <div class="thf-md-12">
+          <thf-button class="btn-right" [t-label]="statusTest" [t-loading]="btnLoading" [t-type]="btnTypeTest" (t-click)="btnTest()"> </thf-button>
+        </div>
+
+        <thf-tag t-icon="true" t-label="Status do Teste" [t-orientation]="tagOrientation"
+        [t-type]="statusTestType" [t-value]="statusTestName" > </thf-tag>
+      </thf-widget>
+    </div>
+  </div>
+</thf-page-default>
+

@@ -1,0 +1,35 @@
+
+<thf-widget class="thf-md-12 thf-lg-12 thf-mt-12" [t-title]="title">
+  <div class="div-widget">
+    <div class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-4 thf-lg-4">
+      <span id="queryOk" (click)="needFilter('OK')">
+      {{queryOk}}
+    </span>
+    </div>
+    <div class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-4 thf-lg-4">
+      <span id="queryFail" (click)="needFilter('FAIL')">
+        {{queryFail}}
+      </span>
+    </div>
+    <div class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-4 thf-lg-4">
+      <span id="totalQuery" (click)="needFilter('ALL')">
+        {{totalQuery}}
+      </span>
+    </div>
+    <div class="thf-text-center thf-sm-12 thf-md-4 thf-lg-4">
+      <span id="ok" (click)="needFilter('OK')">
+        OK
+      </span>
+    </div>
+    <div class="thf-text-center thf-sm-12 thf-md-4 thf-lg-4">
+      <span id="fail" (click)="needFilter('FAIL')">
+        Falhas
+      </span>
+    </div>
+    <div class="thf-text-center thf-sm-12 thf-md-4 thf-lg-4">
+      <span id="total" (click)="needFilter('ALL')">
+        Total
+      </span>
+    </div>
+  </div>
+</thf-widget>

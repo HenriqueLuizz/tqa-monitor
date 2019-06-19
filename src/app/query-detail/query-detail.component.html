@@ -1,0 +1,47 @@
+<thf-page-default t-title="Análise de Resultados - Query">
+    <div class="thf-row">
+      <div class="thf-md-12">
+        <div class="div-rigth">
+          <!--bqa-rating disable="true" [checked]="detail$.rating" ></bqa-rating-->
+        </div>
+        <div class="div-head thf-sm-12 thf-md-12 thf-lg-12">
+          <thf-divider t-label="Origem"></thf-divider>
+          <div class="thf-sm-12 thf-md-4 thf-lg-4">
+            <p>Fonte - {{detail$.application_name}}</p>
+          </div>  
+          <div class="thf-sm-12 thf-md-4 thf-lg-4">
+              <p>Função - {{detail$.func}}</p>
+            </div>
+            <div class="thf-sm-12 thf-md-2 thf-lg-2">
+              <p>Linha - {{ detail$.line | slice:0:4 }}</p>
+            </div>
+            <div class="thf-sm-12 thf-md-2 thf-lg-2">
+              <p>Data execução - {{ detail$.date }}</p>
+            </div>
+          </div>
+          <div class="div-card thf-sm-12 thf-md-12 thf-lg-12">
+            <br>
+            <br>
+            <thf-divider t-label="Query Test Detail"></thf-divider>
+            <label for="query_in">Query Testada</label>
+            <thf-code-editor 
+            [(ngModel)]="detail$.description" 
+            t-height="200"
+            t-language="sql"
+            t-readonly="true"
+            t-theme="vs">
+            </thf-code-editor>
+          <thf-info class="thf-sm-12 thf-md-12 thf-lg-12" t-label="Mensagem" [t-value]="detail$.message"></thf-info>
+          <!--thf-info class="thf-sm-12 thf-md-2 thf-lg-2" t-label="Environment" [t-value]="detail$.environment"></thf-info-->
+          <!--thf-info class="thf-sm-12 thf-md-2 thf-lg-2" t-label="Hostname" [t-value]="detail$.hostname"></thf-info-->
+
+          <thf-divider t-label="Resultado Banco de Dados" class="thf-sm-12 thf-md-12 thf-lg-12" ></thf-divider>
+          <bqa-execplan [idquery]="id_query" class="thf-sm-12 thf-md-12 thf-lg-12"></bqa-execplan>
+
+          <thf-divider t-label="Resultado ADVPL" class="thf-sm-12 thf-md-12 thf-lg-12" ></thf-divider>
+          <bqa-result-advpl class="thf-sm-12 thf-md-12 thf-lg-12" [idquery]="id_query" ></bqa-result-advpl>
+
+        </div>
+      </div>
+    </div>
+  </thf-page-default>

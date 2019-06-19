@@ -1,0 +1,38 @@
+<br>
+<div>
+  <thf-widget class="thf-lg-12 thf-mt-12" t-title="Sources">
+    <thf-list>
+      <thf-list-item *ngFor="let item of sources; let i = index" [t-title]="item.title" [t-index]="i"
+        [t-actions]="eventsObject">
+
+        <thf-list-item-content style="display:flex">
+
+          <thf-info class="thf-lg-4 thf-mt-4" 
+          t-label="Source" 
+          [t-value]="item.source_name" 
+          style="margin: 20px 80px;"></thf-info>
+
+          <thf-info 
+          t-label="OK" 
+          [t-value]="(item.total_queries - (item.dbms_fails -- item.advpl_fails))" 
+          style="margin: 20px 40px;"></thf-info>
+
+          <thf-info 
+          t-label="Fail" 
+          [t-value]="(item.dbms_fails -- item.advpl_fails)" 
+          style="margin: 20px 40px;"></thf-info>
+
+          <thf-info 
+          t-label="Total" 
+          [t-value]="item.total_queries" 
+          style="margin: 20px 40px;"></thf-info>
+
+          <thf-info t-label="Rating %" 
+          [t-value]="(((item.total_queries - (item.advpl_fails -- item.dbms_fails))/item.total_queries | number:'2.0-2')*100)" 
+          style="margin: 20px 40px;"></thf-info>
+
+        </thf-list-item-content>
+      </thf-list-item>
+    </thf-list>
+  </thf-widget>
+</div>

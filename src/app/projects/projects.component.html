@@ -1,0 +1,85 @@
+<thf-page-default t-title="Análise de Resultados">
+  <div class="thf-row">
+    <div class="thf-md-12">
+      <div class="thf-sm-12 thf-md-12 thf-lg-12">
+          <!--FILTRO-->
+        <!--div class="thf-sm-12 thf-md-12 thf-lg-12">
+          <thf-button class="btn-right btn-margin" t-icon="thf-icon thf-icon-filter" t-small="true" t-label="Filtro"
+            (t-click)="showFilter()"></thf-button>
+
+          <thf-widget class="docs-sample-code-tabs" *ngIf=activeFilter>
+
+            <thf-button class="btn-right btn-margin" t-icon="thf-icon thf-icon-clear-content" t-type="default"
+              t-label="Remover" t-small="true" (t-click)="searchClear()"></thf-button>
+            <thf-button class="btn-right btn-margin" t-icon="thf-icon thf-icon-search" t-type="primary" t-label="Buscar"
+              t-small="true" (t-click)="searchQuery()"></thf-button>
+
+            <thf-divider class="thf-md-12" t-label="Buscar Query"></thf-divider>
+            <thf-input name="findQuery" [(ngModel)]="findQuery" t-label="Query" t-icon="thf-icon-search"> </thf-input>
+
+            <thf-divider class="thf-md-12" t-label="Status do Teste"></thf-divider>
+            <thf-switch class="thf-md-2" name="ORACLE" [(ngModel)]="oraIsApproved" t-label="ORACLE" t-label-off="Falha"
+              t-label-on="Ok"></thf-switch>
+            <thf-switch class="thf-md-2" name="MSSQL" [(ngModel)]="mssqlIsApproved" t-label="MSSQL" t-label-off="Falha"
+              t-label-on="Ok"></thf-switch>
+            <thf-switch class="thf-md-2" name="POSTGRES" [(ngModel)]="postIsApproved" t-label="POSTGRES"
+              t-label-off="Falha" t-label-on="Ok"></thf-switch>
+            <thf-button class="btn-right" t-icon="thf-icon thf-icon-delete" t-small="true" (t-click)="cleanStatus()">
+            </thf-button>
+
+            <thf-divider class="thf-md-12" t-label="Mensagem de Erro"></thf-divider>
+            <thf-input name="oraMessage" [(ngModel)]="oraMessage" t-label="ORACLE" t-icon="thf-icon-search">
+            </thf-input>
+            <thf-input name="mssqlMessage" [(ngModel)]="mssqlMessage" t-label="MSSQL" t-icon="thf-icon-search">
+            </thf-input>
+            <thf-input name="postMessage" [(ngModel)]="postMessage" t-label="POSTGRES" t-icon="thf-icon-search">
+            </thf-input>
+
+            <thf-divider class="thf-md-12" t-label="Banco de Dados"></thf-divider>
+            <thf-select name="sgbd" [(ngModel)]="sgbd" t-label="Banco de Dados"
+              [t-options]="[{label: 'TODOS', value: ''}, {label: 'ORACLE', value: 'ORACLE'}, {label: 'MSSQL', value: 'MSSQL'}, {label: 'POSTGRES', value: 'POSTGRES'}]">
+            </thf-select>
+
+            <thf-divider class="thf-md-12" t-label="Nome da Função"></thf-divider>
+            <thf-input name="func" [(ngModel)]="func" t-label="Função" t-icon="thf-icon-search"> </thf-input>
+          </thf-widget>
+        </div -->
+        <div class="div-list thf-sm-12 thf-md-12 thf-lg-12">
+          <thf-list *ngIf="projects">
+            <thf-list-item *ngFor="let item of projects; let i = index" [t-title]="item.squad_name" [t-index]="i"
+              [t-actions]="showproject">
+              <thf-list-item-content #listTitle style="display:flex">
+                <div class="thf-sm-12 thf-md-12 thf-lg-12">
+                  <span id="queryOk" class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    {{item.total_queries - (item.advpl_fails -- item.dbms_fails) }}
+                  </span>
+                  <span id="queryFail" class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    {{(item.advpl_fails -- item.dbms_fails)}}
+                  </span>
+                  <span id="totalQuery" class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    {{item.total_queries}}
+                  </span>
+                  <span id="queryRating" class="thf-font-subtitle thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    {{((item.total_queries - (item.advpl_fails -- item.dbms_fails))/item.total_queries | number:'2.0-2')*100}}%
+                  </span>
+                  <span id="ok" class="thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    Ok
+                  </span>
+                  <span id="fail" class="thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    Falhas
+                  </span>
+                  <span id="total" class="thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    Total
+                  </span>
+                  <span id="rating" class="thf-text-center thf-sm-12 thf-md-3 thf-lg-3">
+                    Rating
+                  </span>
+                </div>
+              </thf-list-item-content>
+            </thf-list-item>
+          </thf-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</thf-page-default>

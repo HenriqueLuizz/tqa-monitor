@@ -1,0 +1,60 @@
+<div class="thf-md-12">
+  <thf-widget t-height="400" t-no-shadow="true" (t-setting)="modal.open()" t-size="400" t-title="Teste de Query Manual"
+    (t-title-action)="cliclSetting()">
+    <thf-modal #modal t-title="Configurações">
+      <thf-multiselect [(ngModel)]="modelDatabase" name="optDatabase" t-label="Testar em:" [t-options]="optDatabase">
+      </thf-multiselect>
+      <thf-multiselect [(ngModel)]="modelTypeExec" name="optTypeExec" t-label="Testar com:" [t-options]="optTypeExec">
+      </thf-multiselect>
+    </thf-modal>
+    <thf-code-editor [(ngModel)]=testQuery t-height="200" t-language="sql" t-readonly="false" t-show-diff="false"
+      t-theme="vs">
+    </thf-code-editor>
+
+    <div class="thf-md-12">
+      <thf-button class="btn-right" [t-label]="statusTest" [t-type]="btnTypeTest" [t-loading]="btnLoading"
+        (t-click)="btnTest()"> </thf-button>
+    </div>
+
+  </thf-widget>
+
+  <!--RESULTADO DO BANCO DE DADOS-->
+  <div *ngIf="dbresult" class="div-list thf-sm-12 thf-md-12 thf-lg-12">
+    <thf-table [t-columns]="columnsDB" [t-items]="dbresult" t-sort="true" [t-striped]="true">
+        <ng-template t-table-row-template let-rowItem let-i="rowIndex" [t-table-row-template-show]="isUndelivered">
+          <thf-widget t-title="Query detail {{ rowItem.code }}">
+              
+            <div class="thf-row" *ngIf="rowItem.sgbd != 'MSSQL'">
+                <thf-code-editor [(ngModel)]=rowItem.plan t-language="sql" t-readonly="true" t-show-diff="false" t-theme="vs"></thf-code-editor>
+              </div>
+
+              <div class="thf-row" *ngIf="rowItem.sgbd == 'MSSQL'">
+                  <thf-widget
+                  class="thf-sm-12"
+                  t-disabled="true"
+                  t-no-shadow="true"
+                  t-primary="false">
+                    {{ rowItem.plan }}
+                </thf-widget>
+              </div>
+            </thf-widget>
+          </ng-template>
+        </thf-table>
+  </div>
+  <!--RESULTADO DO ADVPL-->
+  <div *ngIf="advpl" class="div-list thf-sm-12 thf-md-12 thf-lg-12">
+      <thf-table [t-columns]="columnsAdvpl" [t-items]="advpl" t-sort="true" [t-striped]="true">
+        <ng-template t-table-row-template let-rowItem let-i="rowIndex" [t-table-row-template-show]="isUndelivered">
+          <thf-widget t-title="Query detail {{ rowItem.CSGBD }}">
+              <div class="thf-row">
+                <span>CHANGEQUERY</span>
+                <thf-code-editor [(ngModel)]=rowItem.CRETCQ t-language="sql" t-readonly="true" t-show-diff="false" t-theme="vs"></thf-code-editor>
+                <span>MSPARSE</span>
+                <thf-code-editor [(ngModel)]=rowItem.CRETMSP t-language="sql" t-readonly="true" t-show-diff="false" t-theme="vs"></thf-code-editor>
+              </div>     
+            </thf-widget>
+          </ng-template>
+        </thf-table>
+  </div>
+  <!--FIM DOS RESULTADOS-->
+</div>

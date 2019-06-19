@@ -1,0 +1,20 @@
+<thf-page-default t-title="Análise de Resultados">
+  <div class="thf-row">
+    <div class="thf-md-12">
+      <div class="div-list thf-sm-12 thf-md-12 thf-lg-12">
+        <div class="div-rigth">
+          <!--bqa-rating [checked]="starts" disable="true" hiddenLabel="true"></bqa-rating-->
+        </div>
+        <bqa-widget-header *ngFor="let item of project; let i = index"
+          [title]=item.squad_name 
+          [queryOk]="(item.total_queries - (item.dbms_fails -- item.advpl_fails))" 
+          [queryFail]="(item.dbms_fails -- item.advpl_fails)"
+          [totalQuery]=item.total_queries>
+        </bqa-widget-header>
+      </div>
+    </div>
+    <div class="div-list thf-sm-12 thf-md-12 thf-lg-12">
+      <bqa-source [squad]="id_squad"></bqa-source>
+    </div>
+  </div>
+</thf-page-default>
